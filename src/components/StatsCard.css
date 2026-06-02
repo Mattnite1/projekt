@@ -1,0 +1,80 @@
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.stats-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 1.4rem;
+}
+
+.stats-card-icon.teal {
+  background: var(--color-teal-100);
+  color: var(--color-teal-700);
+}
+
+.stats-card-icon.orange {
+  background: #fff3e6;
+  color: var(--color-orange-600);
+}
+
+.stats-card-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.stats-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Profile stats variant */
+.stats-card-profile {
+  background: var(--color-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  text-align: left;
+  border-left: 4px solid var(--color-teal-700);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.stats-card-profile.orange-border {
+  border-left-color: var(--color-orange-600);
+}
+
+.stats-card-profile-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-teal-700);
+  margin-bottom: 8px;
+}
+
+.stats-card-profile.orange-border .stats-card-profile-label {
+  color: var(--color-orange-600);
+}
+
+.stats-card-profile-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1;
+}

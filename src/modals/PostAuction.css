@@ -1,0 +1,310 @@
+.post-auction {
+  padding: 40px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.post-auction-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 32px;
+}
+
+.post-auction-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Section headings */
+.post-auction-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+}
+
+.post-auction-section-title .icon {
+  font-size: 1.1rem;
+}
+
+/* Form fields */
+.form-field {
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  background: var(--color-teal-50);
+  outline: none;
+  transition: all var(--transition-fast);
+  color: var(--color-text-primary);
+}
+
+.form-input:focus {
+  border-color: var(--color-teal-700);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(20, 134, 109, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-input-prefix {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-teal-50);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.form-input-prefix:focus-within {
+  border-color: var(--color-teal-700);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(20, 134, 109, 0.1);
+}
+
+.form-input-prefix span {
+  padding: 11px 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border-right: 1.5px solid var(--color-border);
+  background: #e8f0ee;
+  font-size: 0.9rem;
+}
+
+.form-input-prefix input {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  outline: none;
+  color: var(--color-text-primary);
+}
+
+/* Info box */
+.post-auction-info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--color-teal-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-teal-100);
+  margin-bottom: 20px;
+}
+
+.post-auction-info-box .check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-teal-700);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.post-auction-info-box p {
+  font-size: 0.8rem;
+  color: var(--color-teal-900);
+  line-height: 1.5;
+}
+
+.publish-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--color-orange-gradient);
+  color: white;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all var(--transition-base);
+  box-shadow: 0 3px 12px rgba(232, 119, 46, 0.3);
+}
+
+.publish-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 119, 46, 0.45);
+}
+
+/* Gallery Section */
+.post-auction-gallery-section {
+  border-top: 1px solid var(--color-border-light);
+  padding-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+}
+
+.post-auction-gallery-left {}
+
+.dropzone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--color-bg);
+  transition: all var(--transition-base);
+  margin-bottom: 16px;
+}
+
+.dropzone:hover,
+.dropzone.drag-over {
+  border-color: var(--color-teal-700);
+  background: var(--color-teal-50);
+}
+
+.dropzone-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.dropzone h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.dropzone p {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.dropzone input[type="file"] {
+  display: none;
+}
+
+.gallery-slots {
+  display: flex;
+  gap: 12px;
+}
+
+.gallery-slot {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  background: var(--color-teal-100);
+  border: 1.5px dashed var(--color-teal-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--color-teal-700);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-slot:hover {
+  background: var(--color-teal-50);
+  border-color: var(--color-teal-900);
+}
+
+/* Tips box */
+.post-auction-tips {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.post-auction-tips h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 14px;
+}
+
+.post-auction-tips ul {
+  list-style: disc;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-auction-tips li {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Success State */
+.post-auction-success {
+  text-align: center;
+  padding: 40px;
+}
+
+.post-auction-success .success-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.post-auction-success h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.post-auction-success p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.post-auction-success button {
+  padding: 12px 32px;
+  background: var(--color-orange-gradient);
+  color: white;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all var(--transition-base);
+}

@@ -1,0 +1,175 @@
+.auction-card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition-slow);
+  animation: fadeInUp 0.5s ease both;
+  cursor: pointer;
+}
+
+.auction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.auction-card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.auction-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.auction-card:hover .auction-card-image img {
+  transform: scale(1.03);
+}
+
+.auction-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.auction-card-badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.auction-card-heart {
+  position: absolute;
+  top: 48px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.auction-card-heart:hover {
+  color: var(--color-danger);
+  transform: scale(1.1);
+}
+
+.auction-card-heart.liked {
+  color: var(--color-danger);
+}
+
+.auction-card-heart svg {
+  width: 16px;
+  height: 16px;
+}
+
+.auction-card-content {
+  padding: 16px;
+}
+
+.auction-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.auction-card-desc {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.auction-card-price-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: var(--color-teal-50);
+  border-radius: var(--radius-sm);
+}
+
+.auction-card-price-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.auction-card-price-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-teal-900);
+}
+
+.auction-card-bids-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.auction-card-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--color-orange-gradient);
+  color: white;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all var(--transition-base);
+  box-shadow: 0 2px 8px rgba(232, 119, 46, 0.25);
+}
+
+.auction-card-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 119, 46, 0.4);
+}
+
+/* Ended auction variant */
+.auction-card.ended .auction-card-badge-dot {
+  background: var(--color-orange-600);
+  animation: none;
+}
+
+.auction-card.ended .auction-card-btn {
+  background: #9ca3af;
+  box-shadow: none;
+  cursor: default;
+}

@@ -1,0 +1,300 @@
+/* ── Breadcrumb ── */
+.profile-breadcrumb {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.profile-breadcrumb span { color: var(--color-teal-700); }
+
+/* ── Header ── */
+.profile-header { margin-bottom: 32px; }
+.profile-header h2 { font-size: 2.4rem; font-weight: 800; color: var(--color-text-primary); margin-bottom: 8px; }
+.profile-header p   { font-size: 0.9rem; color: var(--color-text-secondary); }
+.profile-header a   { color: var(--color-teal-700); font-weight: 600; }
+
+/* ── Stats row ── */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* ── Grid ── */
+.profile-auctions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* ── Card ── */
+.profile-auction-card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  transition: all var(--transition-slow);
+  animation: fadeInUp 0.45s ease both;
+}
+.profile-auction-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-auction-image {
+  width: 160px;
+  min-width: 160px;
+  position: relative;
+  overflow: hidden;
+}
+.profile-auction-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-auction-content {
+  flex: 1;
+  padding: 14px 18px 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ── Status row ── */
+.profile-auction-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.profile-badge.active { background: #dcfce7; color: #166534; }
+.profile-badge.ended  { background: #fef3c7; color: #92400e; }
+.profile-days-left { font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 500; }
+
+/* ── Title / desc ── */
+.profile-auction-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profile-auction-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* ── Stats chips ── */
+.profile-auction-stats-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.profile-stat-chip {
+  background: var(--color-bg);
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+.chip-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1px;
+}
+.chip-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.chip-value.orange { color: var(--color-orange-600); }
+
+/* ── Bid leader ── */
+.profile-latest-bid {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--color-teal-50);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+.bid-leader-label  { color: var(--color-text-secondary); }
+.bid-leader-name   { font-weight: 600; color: var(--color-text-primary); flex: 1; }
+.bid-leader-amount { font-weight: 800; color: var(--color-teal-700); }
+
+/* ── Action buttons ── */
+.profile-auction-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-light);
+}
+.profile-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all var(--transition-fast);
+}
+.profile-action-btn.detail {
+  background: var(--color-teal-50);
+  color: var(--color-teal-700);
+  border-color: var(--color-teal-100);
+}
+.profile-action-btn.detail:hover {
+  background: var(--color-teal-700);
+  color: white;
+  border-color: var(--color-teal-700);
+}
+.profile-action-btn.close {
+  background: #fff7ed;
+  color: #c2410c;
+  border-color: #fed7aa;
+}
+.profile-action-btn.close:hover {
+  background: #c2410c;
+  color: white;
+  border-color: #c2410c;
+}
+.profile-action-btn.delete {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fecdd3;
+}
+.profile-action-btn.delete:hover {
+  background: #be123c;
+  color: white;
+  border-color: #be123c;
+}
+
+/* ── Ribbon ── */
+.profile-ribbon {
+  position: absolute;
+  top: 18px;
+  right: -22px;
+  background: var(--color-teal-700);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 4px 28px;
+  transform: rotate(45deg);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ── Confirm dialog ── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+.confirm-box {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: scaleIn 0.2s ease;
+  text-align: center;
+}
+.confirm-icon { font-size: 2.2rem; margin-bottom: 12px; }
+.confirm-msg  { font-size: 0.95rem; color: var(--color-text-primary); line-height: 1.6; margin-bottom: 24px; font-weight: 500; }
+.confirm-actions { display: flex; gap: 12px; justify-content: center; }
+.confirm-btn {
+  padding: 10px 28px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+}
+.confirm-btn.cancel { background: var(--color-bg); color: var(--color-text-secondary); border: 1.5px solid var(--color-border); }
+.confirm-btn.cancel:hover { border-color: var(--color-text-secondary); color: var(--color-text-primary); }
+.confirm-btn.danger { background: #dc2626; color: white; }
+.confirm-btn.danger:hover { background: #b91c1c; transform: translateY(-1px); }
+
+/* ── Loading ── */
+.profile-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary);
+}
+.profile-loading-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-teal-700);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Empty ── */
+.profile-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary);
+}
+.profile-empty h4 { font-size: 1.2rem; color: var(--color-text-primary); margin-bottom: 8px; }
+
+/* ── Footer ── */
+.profile-footer { text-align: center; padding: 20px 0; }
+.profile-footer p { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 12px; }
+.profile-show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: var(--color-teal-700);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-bottom: 2px solid var(--color-teal-700);
+  transition: all var(--transition-fast);
+}
+.profile-show-more:hover { color: var(--color-teal-900); border-bottom-color: var(--color-teal-900); }
