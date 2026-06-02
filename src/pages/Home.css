@@ -321,4 +321,16 @@
   }
 }
 
+@media (max-width: 480px) {
+  .home-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .btn-primary, .btn-outline {
+    justify-content: center;
+    padding: 12px 20px;
+  }
+}
+
 

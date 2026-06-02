@@ -87,3 +87,9 @@
   }
 }
 
+@media (max-width: 480px) {
+  .topbar-title {
+    display: none;
+  }
+}
+

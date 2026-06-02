@@ -1,3 +1,8 @@
+.live-auctions {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .live-auctions-header h2 {
   font-size: 2.2rem;
   font-weight: 800;
@@ -233,15 +238,9 @@
   color: var(--color-text-primary);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
   .live-auctions-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .live-auctions-header h2 {
-    font-size: 1.8rem;
   }
   .live-auctions-toolbar {
     flex-direction: column;
@@ -259,12 +258,18 @@
   .live-auctions-categories::-webkit-scrollbar {
     display: none;
   }
+  .live-auctions-sort {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .live-auctions-header h2 {
+    font-size: 1.8rem;
+  }
   .category-pill {
     padding: 6px 14px;
     font-size: 0.78rem;
-  }
-  .live-auctions-sort {
-    justify-content: space-between;
   }
   .live-auctions-grid {
     grid-template-columns: 1fr;
