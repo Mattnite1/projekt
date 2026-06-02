@@ -68,3 +68,22 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(232, 119, 46, 0.4);
 }
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+  .topbar-title {
+    font-size: 0.75rem;
+  }
+  .topbar-live-badge {
+    padding: 2px 8px;
+    font-size: 0.6rem;
+    gap: 4px;
+  }
+  .topbar-cta {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+}
+

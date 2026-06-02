@@ -232,3 +232,49 @@
   margin-bottom: 8px;
   color: var(--color-text-primary);
 }
+
+@media (max-width: 992px) {
+  .live-auctions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .live-auctions-header h2 {
+    font-size: 1.8rem;
+  }
+  .live-auctions-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .live-auctions-categories {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+  }
+  .live-auctions-categories::-webkit-scrollbar {
+    display: none;
+  }
+  .category-pill {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+  .live-auctions-sort {
+    justify-content: space-between;
+  }
+  .live-auctions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .fab {
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+}
+

@@ -308,3 +308,31 @@
   font-weight: 600;
   transition: all var(--transition-base);
 }
+
+@media (max-width: 768px) {
+  .post-auction {
+    padding: 20px;
+  }
+  .post-auction-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .post-auction-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .post-auction-gallery-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 20px;
+  }
+  .dropzone {
+    padding: 24px 16px;
+  }
+}
+

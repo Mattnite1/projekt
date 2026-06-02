@@ -266,3 +266,59 @@
   line-height: 1.65;
 }
 
+@media (max-width: 992px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .home-hero-image {
+    justify-content: center;
+  }
+  .home-hero-image img {
+    max-width: 100%;
+  }
+  .home-auctions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .how-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero-text h2 {
+    font-size: 2rem;
+  }
+  .home-hero-text p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .home-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .home-auctions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .home-auctions-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .home-auctions-header h3 {
+    font-size: 1.4rem;
+  }
+  .home-auctions-see-all {
+    align-self: flex-start;
+  }
+  .how-steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+

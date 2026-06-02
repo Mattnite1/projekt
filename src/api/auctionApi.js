@@ -135,7 +135,6 @@ export async function placeBid(auctionId, bidderName, amount) {
     .toUpperCase()
     .slice(0, 2);
 
-  
   const { error: bidError } = await supabase.from('bids').insert({
     auction_id:      auctionId,
     bidder_name:     bidderName,
@@ -144,13 +143,11 @@ export async function placeBid(auctionId, bidderName, amount) {
   });
   if (bidError) throw bidError;
 
-  
   const { error: updateError } = await supabase.rpc('place_bid_update', {
     p_auction_id: auctionId,
     p_amount:     Number(amount),
   });
 
-  
   if (updateError) {
     await supabase
       .from('auctions')
@@ -158,7 +155,16 @@ export async function placeBid(auctionId, bidderName, amount) {
       .eq('id', auctionId);
   }
 
-  
+  try {
+    const bidded = JSON.parse(localStorage.getItem('kindraise_bidded_auctions') || '[]');
+    if (!bidded.includes(auctionId)) {
+      bidded.push(auctionId);
+      localStorage.setItem('kindraise_bidded_auctions', JSON.stringify(bidded));
+    }
+  } catch (e) {
+    console.error('Failed to save bidded auction to localStorage', e);
+  }
+
   return getAuctionById(auctionId);
 }
 
@@ -213,4 +219,17 @@ export async function deleteAuction(id) {
     .eq('id', id);
 
   if (error) throw error;
+}
+
+export async function getBiddedAuctions() {
+  const ids = JSON.parse(localStorage.getItem('kindraise_bidded_auctions') || '[]');
+  if (ids.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from('auctions')
+    .select('*, bids(*)')
+    .in('id', ids);
+
+  if (error) throw error;
+  return data.map(mapRow);
 }

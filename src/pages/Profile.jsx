@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ProfileStatsCard } from '../components/StatsCard';
-import { getUserAuctions, closeAuction, deleteAuction } from '../api/auctionApi';
+import { getUserAuctions, getBiddedAuctions, closeAuction, deleteAuction } from '../api/auctionApi';
 import { getUserId } from '../utils/userId';
 import { images } from '../data/mockData';
 import './Profile.css';
@@ -94,33 +95,35 @@ function ProfileAuctionCard({ auction, index, onClose, onDelete, onDetail }) {
             Podgląd
           </button>
 
-          {auction.isActive ? (
-            <button
-              className="profile-action-btn close"
-              onClick={() => onClose(auction)}
-              title="Zakończ aukcję wcześniej"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <line x1="9" y1="9" x2="15" y2="15" />
-                <line x1="15" y1="9" x2="9" y2="15" />
-              </svg>
-              Zakończ
-            </button>
-          ) : (
-            <button
-              className="profile-action-btn delete"
-              onClick={() => onDelete(auction)}
-              title="Usuń aukcję"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="3 6 5 6 21 6" />
-                <path d="M19 6l-1 14H6L5 6" />
-                <path d="M10 11v6M14 11v6" />
-                <path d="M9 6V4h6v2" />
-              </svg>
-              Usuń
-            </button>
+          {onClose && onDelete && (
+            auction.isActive ? (
+              <button
+                className="profile-action-btn close"
+                onClick={() => onClose(auction)}
+                title="Zakończ aukcję wcześniej"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="9" y1="9" x2="15" y2="15" />
+                  <line x1="15" y1="9" x2="9" y2="15" />
+                </svg>
+                Zakończ
+              </button>
+            ) : (
+              <button
+                className="profile-action-btn delete"
+                onClick={() => onDelete(auction)}
+                title="Usuń aukcję"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14H6L5 6" />
+                  <path d="M10 11v6M14 11v6" />
+                  <path d="M9 6V4h6v2" />
+                </svg>
+                Usuń
+              </button>
+            )
           )}
         </div>
       </div>
@@ -148,23 +151,37 @@ function ConfirmDialog({ pending, onConfirm, onCancel }) {
 
 function Profile({ onPostAuction, onAuctionDetail }) {
   const [myAuctions, setMyAuctions] = useState([]);
+  const [biddedAuctions, setBiddedAuctions] = useState([]);
+  const [activeTab, setActiveTab] = useState('created'); // 'created' | 'bidding'
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4);
   const [actionError, setActionError] = useState('');
+  
   const userId = getUserId();
+  const navigate = useNavigate();
   const { pending, ask, confirm, cancel } = useConfirm();
 
   const load = async () => {
     setLoading(true);
     try {
-      const data = await getUserAuctions(userId);
-      setMyAuctions(data);
+      const [created, bidding] = await Promise.all([
+        getUserAuctions(userId),
+        getBiddedAuctions()
+      ]);
+      setMyAuctions(created);
+      setBiddedAuctions(bidding);
+    } catch (e) {
+      console.error('Failed to load auctions:', e);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => { load(); }, []);
+
+  useEffect(() => {
+    setVisibleCount(4);
+  }, [activeTab]);
 
   const handleClose = (auction) => {
     ask(
@@ -194,7 +211,9 @@ function Profile({ onPostAuction, onAuctionDetail }) {
     );
   };
 
-  const visible = myAuctions.slice(0, visibleCount);
+  const currentAuctions = activeTab === 'created' ? myAuctions : biddedAuctions;
+  const visible = currentAuctions.slice(0, visibleCount);
+  
   const activeCount = myAuctions.filter(a => a.isActive).length;
   const totalFunds = myAuctions.reduce((s, a) => s + a.currentPrice, 0);
   const totalBidders = myAuctions.reduce((s, a) => s + (a.biddersCount || 0), 0);
@@ -204,20 +223,19 @@ function Profile({ onPostAuction, onAuctionDetail }) {
       <ConfirmDialog pending={pending} onConfirm={confirm} onCancel={cancel} />
 
       <div className="profile-breadcrumb animate-fade-in">
-        Dashboard › <span>Moje Aukcje</span>
+        Dashboard › <span>Moje Konto</span>
       </div>
 
       <div className="profile-header animate-fade-in-up">
-        <h2>Moje Aukcje</h2>
+        <h2>Profil i Licytacje</h2>
         <p>
-          Zarządzaj swoimi przedmiotami wystawionymi dla{' '}
+          Zarządzaj swoimi aukcjami oraz śledź te, w których bierzesz udział dla{' '}
           <a href="#">KindRaise Collective</a>.
         </p>
       </div>
 
-      {}
       <div className="profile-stats">
-        <ProfileStatsCard label="Aktywne Aukcje" value={activeCount} delay={0.1} />
+        <ProfileStatsCard label="Twoje Aktywne Aukcje" value={activeCount} delay={0.1} />
         <ProfileStatsCard
           label="Zebrane Fundusze"
           value={`${totalFunds.toLocaleString('pl-PL')} zł`}
@@ -234,28 +252,61 @@ function Profile({ onPostAuction, onAuctionDetail }) {
         </div>
       )}
 
-      {}
+      {/* Tabs Navigation */}
+      <div className="profile-tabs-nav">
+        <button
+          className={`profile-tab-btn ${activeTab === 'created' ? 'active' : ''}`}
+          onClick={() => setActiveTab('created')}
+        >
+          Wystawione przez mnie ({myAuctions.length})
+        </button>
+        <button
+          className={`profile-tab-btn ${activeTab === 'bidding' ? 'active' : ''}`}
+          onClick={() => setActiveTab('bidding')}
+        >
+          Licytowane przeze mnie ({biddedAuctions.length})
+        </button>
+      </div>
+
       {loading ? (
         <div className="profile-loading">
           <div className="profile-loading-spinner" />
           <p>Ładowanie aukcji...</p>
         </div>
-      ) : myAuctions.length === 0 ? (
-        <div className="profile-empty animate-fade-in">
-          <h4>Nie masz jeszcze żadnych aukcji</h4>
-          <p>Kliknij „Start a Cause" żeby dodać swoją pierwszą aukcję!</p>
-          <button
-            onClick={onPostAuction}
-            style={{
-              marginTop: 16, padding: '12px 28px',
-              background: 'var(--color-orange-gradient)', color: 'white',
-              borderRadius: 'var(--radius-pill)', fontWeight: 600,
-              cursor: 'pointer', border: 'none', fontSize: '0.9rem',
-            }}
-          >
-            + Start a Cause
-          </button>
-        </div>
+      ) : currentAuctions.length === 0 ? (
+        activeTab === 'created' ? (
+          <div className="profile-empty animate-fade-in">
+            <h4>Nie masz jeszcze żadnych wystawionych aukcji</h4>
+            <p>Kliknij „Start a Cause", aby dodać swoją pierwszą aukcję!</p>
+            <button
+              onClick={onPostAuction}
+              style={{
+                marginTop: 16, padding: '12px 28px',
+                background: 'var(--color-orange-gradient)', color: 'white',
+                borderRadius: 'var(--radius-pill)', fontWeight: 600,
+                cursor: 'pointer', border: 'none', fontSize: '0.9rem',
+              }}
+            >
+              + Start a Cause
+            </button>
+          </div>
+        ) : (
+          <div className="profile-empty animate-fade-in">
+            <h4>Nie licytujesz jeszcze żadnych aukcji</h4>
+            <p>Przejdź do listy aktywnych licytacji, aby wesprzeć pieski w potrzebie!</p>
+            <button
+              onClick={() => navigate('/auctions')}
+              style={{
+                marginTop: 16, padding: '12px 28px',
+                background: 'var(--color-orange-gradient)', color: 'white',
+                borderRadius: 'var(--radius-pill)', fontWeight: 600,
+                cursor: 'pointer', border: 'none', fontSize: '0.9rem',
+              }}
+            >
+              Zobacz aktywne licytacje
+            </button>
+          </div>
+        )
       ) : (
         <>
           <div className="profile-auctions-grid">
@@ -264,16 +315,16 @@ function Profile({ onPostAuction, onAuctionDetail }) {
                 key={auction.id}
                 auction={auction}
                 index={i}
-                onClose={handleClose}
-                onDelete={handleDelete}
+                onClose={activeTab === 'created' ? handleClose : undefined}
+                onDelete={activeTab === 'created' ? handleDelete : undefined}
                 onDetail={onAuctionDetail || (() => {})}
               />
             ))}
           </div>
 
           <div className="profile-footer animate-fade-in">
-            <p>Wyświetlasz {visible.length} z {myAuctions.length} przedmiotów</p>
-            {visibleCount < myAuctions.length && (
+            <p>Wyświetlasz {visible.length} z {currentAuctions.length} przedmiotów</p>
+            {visibleCount < currentAuctions.length && (
               <button
                 className="profile-show-more"
                 onClick={() => setVisibleCount(p => p + 4)}

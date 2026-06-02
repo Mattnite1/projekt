@@ -397,3 +397,38 @@
 .bid-name-input:focus {
   border-color: var(--color-teal-700);
 }
+
+@media (max-width: 768px) {
+  .auction-detail {
+    grid-template-columns: 1fr;
+  }
+  .auction-detail-gallery {
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+  .auction-detail-main-image img {
+    min-height: 240px;
+    height: 240px;
+  }
+  .auction-detail-info {
+    padding: 20px;
+    max-height: none;
+  }
+  .auction-detail-title {
+    font-size: 1.3rem;
+  }
+  .auction-detail-meta {
+    flex-wrap: wrap;
+  }
+  .auction-detail-meta-item {
+    min-width: calc(50% - 5px);
+  }
+  .auction-detail-footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .auction-detail-timer label {
+    text-align: left;
+  }
+}
+
