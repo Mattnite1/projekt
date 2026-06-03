@@ -116,7 +116,7 @@ function AuctionDetail({ auction, isOpen, onClose }) {
         <div className="auction-detail-info">
           <div className="auction-detail-live-badge">
             <span className="dot"></span>
-            Live Auction
+            Licytacja na żywo
           </div>
 
           <h2 className="auction-detail-title">{currentAuction.title}</h2>

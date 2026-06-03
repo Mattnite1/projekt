@@ -32,6 +32,12 @@ const categoryIcons = {
   'Experiences': '📸',
   'Pet Accessories': '🐾',
 };
+const categoryTranslations = {
+  'All Items': 'Wszystkie',
+  'Fine Art': 'Sztuka',
+  'Experiences': 'Doświadczenia',
+  'Pet Accessories': 'Akcesoria',
+};
 
 function sortAuctions(list, sortBy) {
   const sorted = [...list];
@@ -147,7 +153,7 @@ function LiveAuctions({ onAuctionDetail, onPostAuction }) {
               }}
             >
               <span>{categoryIcons[cat]}</span>
-              {cat}
+              {categoryTranslations[cat] || cat}
             </button>
           ))}
 

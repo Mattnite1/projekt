@@ -29,7 +29,7 @@ function Sidebar({ onStartCause }) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
           </svg>
-          Live Auctions
+          Aukcje
         </NavLink>
 
         <NavLink
@@ -40,7 +40,7 @@ function Sidebar({ onStartCause }) {
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
             <circle cx="12" cy="7" r="4" />
           </svg>
-          Profile
+          Profil
         </NavLink>
       </nav>
 
@@ -51,7 +51,7 @@ function Sidebar({ onStartCause }) {
             <line x1="12" y1="8" x2="12" y2="16" />
             <line x1="8" y1="12" x2="16" y2="12" />
           </svg>
-          Start a Cause
+          Dodaj aukcję
         </button>
       </div>
     </aside>

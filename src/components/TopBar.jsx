@@ -7,12 +7,12 @@ function TopBar({ onStartCause }) {
         <span className="topbar-title">Licytuj dla piesków</span>
         <span className="topbar-live-badge">
           <span className="topbar-live-dot"></span>
-          Live Now
+          Na żywo
         </span>
       </div>
       <div className="topbar-right">
         <button className="topbar-cta" onClick={onStartCause}>
-          Start a Cause
+          Dodaj aukcję
         </button>
       </div>
     </header>

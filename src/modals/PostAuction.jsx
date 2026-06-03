@@ -105,10 +105,9 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
         </div>
       ) : (
         <div className="post-auction">
-          <h2 className="post-auction-title">Post Auction Item</h2>
+          <h2 className="post-auction-title">Dodaj nową aukcję</h2>
 
           <div className="post-auction-body">
-            {}
             <div>
               <div className="post-auction-section-title">
                 <span className="icon">📋</span> Szczegóły aukcji
@@ -120,7 +119,7 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
                   className="form-input"
                   name="title"
                   type="text"
-                  placeholder="e.g. Mid-Century Ceramic Vase"
+                  placeholder="np. Ręcznie robiony wazon ceramiczny"
                   value={form.title}
                   onChange={handleChange}
                 />
@@ -131,10 +130,10 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
                 <div>
                   <label>Kategoria</label>
                   <select className="form-input" name="category" value={form.category} onChange={handleChange}>
-                    <option value="">Select a category</option>
-                    <option value="Fine Art">Fine Art</option>
-                    <option value="Experiences">Experiences</option>
-                    <option value="Pet Accessories">Pet Accessories</option>
+                    <option value="">Wybierz kategorię</option>
+                    <option value="Fine Art">Sztuka</option>
+                    <option value="Experiences">Doświadczenia</option>
+                    <option value="Pet Accessories">Akcesoria</option>
                   </select>
                   {errors.category && <p style={{ color: '#dc2626', fontSize: '0.75rem', marginTop: 4 }}>{errors.category}</p>}
                 </div>
@@ -153,7 +152,7 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
                 <textarea
                   className="form-input form-textarea"
                   name="description"
-                  placeholder="Tell the story of this item and its significance..."
+                  placeholder="Opisz historię swojego przedmiotu i jego znaczenie..."
                   value={form.description}
                   onChange={handleChange}
                 />
@@ -161,14 +160,13 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
               </div>
             </div>
 
-            {}
             <div>
               <div className="post-auction-section-title">
                 <span className="icon">🔨</span> Aukcja
               </div>
 
               <div className="form-field">
-                <label>Starting Bid (PLN)</label>
+                <label>Cena wywoławcza (PLN)</label>
                 <div className="form-input-prefix">
                   <span>zł</span>
                   <input
@@ -185,7 +183,7 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
               </div>
 
               <div className="form-field">
-                <label>Auction End Date</label>
+                <label>Data zakończenia aukcji</label>
                 <input
                   className="form-input"
                   name="endDate"
@@ -199,7 +197,7 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
 
               <div className="post-auction-info-box">
                 <div className="check">✓</div>
-                <p>All items are vetted by our curators to maintain gallery quality.</p>
+                <p>Wszystkie przedmioty są weryfikowane przez naszych kuratorów w celu zachowania wysokiej jakości.</p>
               </div>
 
               <button className="publish-btn" onClick={handleSubmit} disabled={loading}>
@@ -208,7 +206,6 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
             </div>
           </div>
 
-          {}
           <div className="post-auction-gallery-section">
             <div className="post-auction-gallery-left">
               <div className="post-auction-section-title">
@@ -223,8 +220,8 @@ function PostAuction({ isOpen, onClose, onAuctionCreated }) {
                 onClick={() => fileInputRef.current?.click()}
               >
                 <span className="dropzone-icon">☁️</span>
-                <h4>Drag and drop images here</h4>
-                <p>Or click to browse from your device (Max 10MB)</p>
+                <h4>Przeciągnij i upuść zdjęcia tutaj</h4>
+                <p>Lub kliknij, aby wybrać z urządzenia (maks. 10MB)</p>
                 <input
                   ref={fileInputRef}
                   type="file"

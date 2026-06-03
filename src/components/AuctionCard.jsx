@@ -32,7 +32,7 @@ function AuctionCard({ auction, onBidClick, onDetailClick, index = 0, liked = fa
         <img src={getImageSrc(auction)} alt={auction.title} />
         <span className="auction-card-badge">
           <span className="auction-card-badge-dot"></span>
-          {auction.isActive ? 'LIVE' : 'ZAKOŃCZONA'}
+          {auction.isActive ? 'NA ŻYWO' : 'ZAKOŃCZONA'}
         </span>
         <button
           className={`auction-card-heart ${liked ? 'liked' : ''}`}
