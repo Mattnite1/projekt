@@ -1,4 +1,3 @@
-/* ── Breadcrumb ── */
 .profile-breadcrumb {
   font-size: 0.72rem;
   font-weight: 600;
@@ -9,13 +8,11 @@
 }
 .profile-breadcrumb span { color: var(--color-teal-700); }
 
-/* ── Header ── */
 .profile-header { margin-bottom: 32px; }
 .profile-header h2 { font-size: 2.4rem; font-weight: 800; color: var(--color-text-primary); margin-bottom: 8px; }
 .profile-header p   { font-size: 0.9rem; color: var(--color-text-secondary); }
 .profile-header a   { color: var(--color-teal-700); font-weight: 600; }
 
-/* ── Stats row ── */
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -23,7 +20,6 @@
   margin-bottom: 40px;
 }
 
-/* ── Tabs navigation ── */
 .profile-tabs-nav {
   display: flex;
   gap: 8px;
@@ -50,7 +46,6 @@
   border-bottom-color: var(--color-teal-700);
 }
 
-/* ── Grid ── */
 .profile-auctions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -58,7 +53,6 @@
   margin-bottom: 32px;
 }
 
-/* ── Card ── */
 .profile-auction-card {
   background: var(--color-card);
   border-radius: var(--radius-lg);
@@ -90,7 +84,6 @@
   min-width: 0;
 }
 
-/* ── Status row ── */
 .profile-auction-status {
   display: flex;
   align-items: center;
@@ -112,7 +105,6 @@
 .profile-badge.ended  { background: #fef3c7; color: #92400e; }
 .profile-days-left { font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 500; }
 
-/* ── Title / desc ── */
 .profile-auction-title {
   font-size: 1rem;
   font-weight: 700;
@@ -134,7 +126,6 @@
   margin-bottom: 10px;
 }
 
-/* ── Stats chips ── */
 .profile-auction-stats-row {
   display: flex;
   gap: 8px;
@@ -163,7 +154,6 @@
 }
 .chip-value.orange { color: var(--color-orange-600); }
 
-/* ── Bid leader ── */
 .profile-latest-bid {
   display: flex;
   align-items: center;
@@ -178,7 +168,6 @@
 .bid-leader-name   { font-weight: 600; color: var(--color-text-primary); flex: 1; }
 .bid-leader-amount { font-weight: 800; color: var(--color-teal-700); }
 
-/* ── Action buttons ── */
 .profile-auction-actions {
   display: flex;
   gap: 6px;
@@ -229,7 +218,6 @@
   border-color: #be123c;
 }
 
-/* ── Ribbon ── */
 .profile-ribbon {
   position: absolute;
   top: 18px;
@@ -245,7 +233,6 @@
   pointer-events: none;
 }
 
-/* ── Confirm dialog ── */
 .confirm-overlay {
   position: fixed;
   inset: 0;
@@ -283,7 +270,6 @@
 .confirm-btn.danger { background: #dc2626; color: white; }
 .confirm-btn.danger:hover { background: #b91c1c; transform: translateY(-1px); }
 
-/* ── Loading ── */
 .profile-loading {
   text-align: center;
   padding: 60px 20px;
@@ -299,7 +285,6 @@
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Empty ── */
 .profile-empty {
   text-align: center;
   padding: 60px 20px;
@@ -307,7 +292,6 @@
 }
 .profile-empty h4 { font-size: 1.2rem; color: var(--color-text-primary); margin-bottom: 8px; }
 
-/* ── Footer ── */
 .profile-footer { text-align: center; padding: 20px 0; }
 .profile-footer p { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 12px; }
 .profile-show-more {
